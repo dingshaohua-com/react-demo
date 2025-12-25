@@ -4,3 +4,188 @@ html,body{
   padding: 0;
   margin: 0;
 }
+
+/* ========== 预设组件样式 ========== */
+@layer components {
+  /* 基础按钮 */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* 主要按钮 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           bg-blue-600 text-white hover:bg-blue-700 
+           focus:ring-blue-500 active:bg-blue-800;
+  }
+
+  /* 次要按钮 */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           bg-gray-200 text-gray-800 hover:bg-gray-300 
+           focus:ring-gray-400 active:bg-gray-400;
+  }
+
+  /* 成功按钮 */
+  .btn-success {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           bg-emerald-600 text-white hover:bg-emerald-700 
+           focus:ring-emerald-500 active:bg-emerald-800;
+  }
+
+  /* 危险按钮 */
+  .btn-danger {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           bg-red-600 text-white hover:bg-red-700 
+           focus:ring-red-500 active:bg-red-800;
+  }
+
+  /* 边框按钮 */
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           border-2 border-blue-600 text-blue-600 bg-transparent
+           hover:bg-blue-600 hover:text-white focus:ring-blue-500;
+  }
+
+  /* 幽灵按钮 */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium 
+           transition-all duration-200 cursor-pointer select-none
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           bg-transparent text-gray-700 hover:bg-gray-100 
+           focus:ring-gray-300 active:bg-gray-200;
+  }
+
+  /* 按钮尺寸 */
+  .btn-sm {
+    @apply text-sm px-3 py-1.5;
+  }
+
+  .btn-lg {
+    @apply text-lg px-6 py-3;
+  }
+
+  /* 输入框 */
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           placeholder:text-gray-400
+           disabled:bg-gray-100 disabled:cursor-not-allowed;
+  }
+
+  .input-error {
+    @apply w-full px-4 py-2 border rounded-lg
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:border-transparent
+           placeholder:text-gray-400
+           disabled:bg-gray-100 disabled:cursor-not-allowed
+           border-red-500 focus:ring-red-500;
+  }
+
+  /* 卡片 */
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6 
+           transition-shadow duration-200 hover:shadow-lg;
+  }
+
+  .card-bordered {
+    @apply bg-white rounded-xl p-6 transition-shadow duration-200
+           border border-gray-200 shadow-none hover:shadow-md;
+  }
+
+  /* 徽章 */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full 
+           text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full 
+           text-xs font-medium bg-blue-100 text-blue-800;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full 
+           text-xs font-medium bg-emerald-100 text-emerald-800;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full 
+           text-xs font-medium bg-amber-100 text-amber-800;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full 
+           text-xs font-medium bg-red-100 text-red-800;
+  }
+
+  /* Flex 布局快捷类 */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  /* 文本省略 */
+  .text-ellipsis-1 {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  .text-ellipsis-2 {
+    @apply overflow-hidden line-clamp-2;
+  }
+
+  .text-ellipsis-3 {
+    @apply overflow-hidden line-clamp-3;
+  }
+
+  /* 链接样式 */
+  .link {
+    @apply text-blue-600 hover:text-blue-800 underline underline-offset-2
+           transition-colors duration-200;
+  }
+
+  /* 分割线 */
+  .divider {
+    @apply w-full h-px bg-gray-200 my-4;
+  }
+
+  /* 容器 */
+  .container-sm {
+    @apply max-w-2xl mx-auto px-4;
+  }
+
+  .container-md {
+    @apply max-w-4xl mx-auto px-4;
+  }
+
+  .container-lg {
+    @apply max-w-6xl mx-auto px-4;
+  }
+}
