@@ -9,7 +9,8 @@ const router = createHashRouter([
     children: [
       { index: true, Component: lazy(() => import('../pages/home')) },
       { path: '/screenshot', Component: lazy(() => import('../pages/screenshot')) },
-      { path: '/screenshot-long', Component: lazy(() => import('../pages/screenshot-long')) }
+      { path: '/screenshot-long', Component: lazy(() => import('../pages/screenshot-long')) },
+      { path: '/screenshot-long-mark', Component: lazy(() => import('../pages/screenshot-long-mark')) }
     ]
   }
 ])
