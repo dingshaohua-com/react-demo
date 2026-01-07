@@ -1,6 +1,7 @@
 import { snapdom } from "@zumer/snapdom";
 import { useRef, type Ref } from "react";
 import * as htmlToImage from 'html-to-image';
+import { toast } from "sonner";
 
 export default function ScreenshotLong() {
   const characters = [
@@ -76,15 +77,18 @@ export default function ScreenshotLong() {
   const contentRef = useRef<HTMLElement>(null);
   const handleGenerate = async (type: string) => {
     let imgSrc = null;
-    if (type === 'htmlToImage') {
+    const isHtmlToImage = type === 'htmlToImage'
+    if (isHtmlToImage) {
+      toast.info('htmlToImage工具生成');
       imgSrc = await htmlToImage.toPng(contentRef.current!);
     } else {
+      toast.info('snapdom工具生成');
       const img = await snapdom.toPng(contentRef.current!) as HTMLImageElement;
       imgSrc = img.src;
     }
 
     const link = document.createElement('a');
-    link.download = 'share-card.png';
+    link.download = type+'.png';
     link.href = imgSrc;
     link.click();
   }
