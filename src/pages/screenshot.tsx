@@ -1,14 +1,26 @@
 import { useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
+import { snapdom } from '@zumer/snapdom';
 
-export default function HtmlToImg() {
+export default function Screenshot() {
   const ref = useRef<HTMLDivElement>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
+  const [generatingMethod, setGeneratingMethod] = useState<'html-to-image' | 'snapdom' | null>(null);
 
-  const handleGenerateImage = async () => {
+  // 使用 html-to-image 生成
+  const handleGenerateWithHtmlToImage = async () => {
     if (!ref.current) return;
+    setGeneratingMethod('html-to-image');
     const dataUrl = await toPng(ref.current, { cacheBust: true, pixelRatio: 2 });
     setGeneratedImage(dataUrl);
+  };
+
+  // 使用 snapdom 生成
+  const handleGenerateWithSnapdom = async () => {
+    if (!ref.current) return;
+    setGeneratingMethod('snapdom');
+    const result = await snapdom.toPng(ref.current) as HTMLImageElement;
+    setGeneratedImage(result.src);
   };
 
   const handleDownload = () => {
@@ -116,8 +128,11 @@ export default function HtmlToImg() {
 
       {/* 操作按钮 */}
       <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mt-6 sm:mt-8 px-4">
-        <button onClick={handleGenerateImage} className="btn-primary w-full sm:w-auto">
-          ✨ 生成图片
+        <button onClick={handleGenerateWithHtmlToImage} className="btn-primary w-full sm:w-auto">
+          ✨ html-to-image 生成
+        </button>
+        <button onClick={handleGenerateWithSnapdom} className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer bg-purple-600 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+          🎯 snapdom 生成
         </button>
         {generatedImage && (
           <button onClick={handleDownload} className="btn-success w-full sm:w-auto">
@@ -125,6 +140,13 @@ export default function HtmlToImg() {
           </button>
         )}
       </div>
+
+      {/* 显示当前使用的方法 */}
+      {generatingMethod && (
+        <p className="text-center text-white/60 text-sm mt-4">
+          当前使用: <span className="text-white font-medium">{generatingMethod}</span>
+        </p>
+      )}
     </div>
   );
 }

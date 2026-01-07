@@ -1,9 +1,10 @@
 import { Link } from 'react-router'
 
 const pages = [
-  { path: '/teacher', name: 'Teacher', desc: '教师页面示例', icon: '👨‍🏫' },
-  { path: '/snapdom', name: 'Snapdom', desc: 'DOM 快照工具', icon: '📸' },
-  { path: '/html-to-img', name: 'HTML to Image', desc: 'HTML 转图片工具', icon: '🖼️' }
+  { path: '/screenshot', name: '短截图', desc: 'HTMLtoImage 和 Snapdom，短截图', icon: '🖼️' },
+  { path: '/screenshot-long', name: '长截图', desc: 'HTMLtoImage 和 Snapdom，截长图', icon: '👨‍🏫' },
+  // { path: '/snapdom', name: 'Snapdom', desc: 'DOM 快照工具', icon: '📸' },
+ 
 ]
 
 export default function Home() {

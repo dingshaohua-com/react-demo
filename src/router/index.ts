@@ -8,9 +8,8 @@ const router = createHashRouter([
     Component: Root,
     children: [
       { index: true, Component: lazy(() => import('../pages/home')) },
-      { path: '/teacher', Component: lazy(() => import('../pages/teacher')) },
-      { path: '/snapdom', Component: lazy(() => import('../pages/snapdom')) },
-      { path: '/html-to-img', Component: lazy(() => import('../pages/html-to-img')) }
+      { path: '/screenshot', Component: lazy(() => import('../pages/screenshot')) },
+      { path: '/screenshot-long', Component: lazy(() => import('../pages/screenshot-long')) }
     ]
   }
 ])
