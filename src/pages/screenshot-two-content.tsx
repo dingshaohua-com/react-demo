@@ -1,36 +1,66 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import axios from 'axios';
 import { toast } from 'sonner';
-import * as Comlink from 'comlink';
 import { snapdom } from '@zumer/snapdom';
 import cloneNode from '../utils/clone-node';
 import * as htmlToImage from 'html-to-image';
 import ScreenshotLong from './screenshot-long';
 import { useRef, useState, type Ref } from 'react';
+import downHelper from '../utils/down-helper'
 
 export default function TwoContentScreenshot() {
   const [rmContent, setRmContent] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
+  // const handleGenerate = async (type: string) => {
+  //   console.time('方法耗时');
+  //   const htmlNode = cloneNode({ originalContent: contentRef.current, mountBody: true, onCloned: () => {} });
+  //   let imgSrc = null;
+  //   const isHtmlToImage = type === 'htmlToImage';
+  //   if (isHtmlToImage) {
+  //     toast.info('htmlToImage工具生成');
+  //     imgSrc = await htmlToImage.toPng(htmlNode);
+  //   } else {
+  //     toast.info('snapdom工具生成');
+  //     const img = (await snapdom.toPng(htmlNode)) as HTMLImageElement;
+  //     imgSrc = img.src;
+  //   }
+  //   console.timeEnd('方法耗时');
+
+  //   const link = document.createElement('a');
+  //   link.download = type + '.png';
+  //   link.href = imgSrc;
+  //   link.click();
+  // };
+
   const handleGenerate = async (type: string) => {
     console.time('方法耗时');
     const htmlNode = cloneNode({ originalContent: contentRef.current, mountBody: true, onCloned: () => {} });
-    let imgSrc = null;
-    const isHtmlToImage = type === 'htmlToImage';
-    if (isHtmlToImage) {
-      toast.info('htmlToImage工具生成');
-      imgSrc = await htmlToImage.toPng(htmlNode);
-    } else {
-      toast.info('snapdom工具生成');
-      const img = (await snapdom.toPng(htmlNode)) as HTMLImageElement;
-      imgSrc = img.src;
-    }
-    console.timeEnd('方法耗时');
+    // let imgSrc = null;
+    // const isHtmlToImage = type === 'htmlToImage';
+    // if (isHtmlToImage) {
+    //   toast.info('htmlToImage工具生成');
+    //   imgSrc = await htmlToImage.toPng(htmlNode);
+    // } else {
+    //   toast.info('snapdom工具生成');
+    //   const img = (await snapdom.toPng(htmlNode)) as HTMLImageElement;
+    //   imgSrc = img.src;
+    // }
+    // console.timeEnd('方法耗时');
 
-    const link = document.createElement('a');
-    link.download = type + '.png';
-    link.href = imgSrc;
-    link.click();
+    // const link = document.createElement('a');
+    // link.download = type + '.png';
+    // link.href = imgSrc;
+    // link.click();
+
+    const { data } = await axios.post(
+      'http://localhost:3000/screenshot',
+      { html: htmlNode.outerHTML },
+      {
+        responseType: 'blob', // This is the most important part!
+      },
+    );
+    downHelper(data)
+    // console.log(data);
   };
-
 
   return (
     <div className="h-full flex flex-col min-h-0 z-0">
