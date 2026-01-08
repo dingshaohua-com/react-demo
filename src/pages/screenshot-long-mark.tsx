@@ -136,7 +136,7 @@ export default function ScreenshotLong() {
 
         {/* 标题 */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 mb-4 cursor-pointer">
+          <h1 className="text-4xl sm:text-6xl font-bold text-transparent bg-clip-text bg-linear-to-br from-yellow-400 via-red-500 to-yellow-400 mb-4 cursor-pointer">
             西 游 记
           </h1>
           <p className="text-xl sm:text-2xl text-amber-200 mb-2">Journey to the West</p>
@@ -161,7 +161,7 @@ export default function ScreenshotLong() {
             {characters.map((char, index) => (
               <div
                 key={index}
-                className={`bg-gradient-to-br ${char.color} rounded-2xl p-5 shadow-xl transform hover:scale-105 transition-all duration-300`}
+                className={`bg-linear-to-br ${char.color} rounded-2xl p-5 shadow-xl transform hover:scale-105 transition-all duration-300`}
               >
                 <div className="text-center mb-4">
                   <div className="text-6xl mb-2">{char.avatar}</div>
@@ -189,7 +189,7 @@ export default function ScreenshotLong() {
 
         {/* 白龙马 */}
         <section className="max-w-4xl mx-auto mb-16">
-          <div className="bg-gradient-to-r from-slate-100 to-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 shadow-xl">
+          <div className="bg-linear-to-br from-slate-100 to-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-6 shadow-xl">
             <div className="text-8xl">🐴</div>
             <div className="text-center sm:text-left">
               <h3 className="text-2xl font-bold text-gray-800 mb-2">白龙马</h3>
@@ -273,7 +273,7 @@ export default function ScreenshotLong() {
                 </div>
                 <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-red-600 to-orange-500 rounded-full transition-all duration-500"
+                    className="h-full bg-linear-to-br from-red-600 to-orange-500 rounded-full transition-all duration-500"
                     style={{ width: `${monster.danger}%` }}
                   />
                 </div>
