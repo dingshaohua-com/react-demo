@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
-html,body{
+html, body, #root {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 /* ========== 预设组件样式 ========== */
