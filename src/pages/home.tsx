@@ -5,6 +5,8 @@ const pages = [
   { path: '/screenshot-long', name: '长截图', desc: 'HTMLtoImage 和 Snapdom，截长图', icon: '👨‍🏫' },
   // { path: '/screenshot-long-mark', name: '长截图并标记', desc: 'HTMLtoImage 和 Snapdom，截长图和标记', icon: '📸' },
   { path: '/screenshot-two-content', name: '两行内容截图', desc: 'HTMLtoImage 和 Snapdom，截两行内容', icon: '📸' },
+  { path: '/swr-demo', name: 'swr例子', desc: 'swr包装请求', icon: '🙏' },
+
 ]
 
 export default function Home() {

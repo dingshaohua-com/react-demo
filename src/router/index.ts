@@ -11,7 +11,8 @@ const router = createHashRouter([
       { path: '/screenshot', Component: lazy(() => import('../pages/screenshot')) },
       { path: '/screenshot-long', Component: lazy(() => import('../pages/screenshot-long')) },
       { path: '/screenshot-long-mark', Component: lazy(() => import('../pages/screenshot-long-mark')) },
-      { path: '/screenshot-two-content', Component: lazy(() => import('../pages/screenshot-two-content')) }
+      { path: '/screenshot-two-content', Component: lazy(() => import('../pages/screenshot-two-content')) },
+      { path: '/swr-demo', Component: lazy(() => import('../pages/swr-demo')) },
     ]
   }
 ])
